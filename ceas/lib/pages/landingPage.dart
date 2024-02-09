@@ -32,7 +32,7 @@ class _LandingPageState extends State<LandingPage> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: Image.asset(
-                    "widget.imageurl",
+                    widget.imageurl,
                     fit: BoxFit.contain,
                   ),
                 ),
