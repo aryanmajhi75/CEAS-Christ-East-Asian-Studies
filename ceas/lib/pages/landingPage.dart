@@ -1,14 +1,9 @@
+import "package:ceas/components/ImageCard.dart";
 import "package:ceas/pages/home_screen.dart";
 import "package:flutter/material.dart";
 
 class LandingPage extends StatefulWidget {
-  final String imageurl;
-  final String heading;
-  const LandingPage({
-    super.key,
-    required this.imageurl,
-    required this.heading,
-  });
+  const LandingPage({super.key});
 
   @override
   State<LandingPage> createState() => _LandingPageState();
@@ -22,50 +17,38 @@ class _LandingPageState extends State<LandingPage> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.only(
+            left: 10,
+            right: 10,
+          ),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Card(
-                  child: Stack(
-                    children: [
-                      Image.asset(
-                        widget.imageurl,
-                        fit: BoxFit.cover,
-                      ),
-                      Text(
-                        widget.heading,
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 50,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
+                ImageCard(
+                  imageurl: "assets/images/china.jpg",
+                  heading: "China",
+                  parentHeight: deviceHeight * 0.4,
                 ),
-                Container(
-                  height: deviceHeight * 0.2,
-                  width: deviceWidth * 0.9,
-                  decoration: const BoxDecoration(
-                    color: Colors.blueAccent,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(20),
-                    ),
-                  ),
-                  child: Image.asset(
-                    widget.imageurl,
-                    fit: BoxFit.cover,
-                  ),
+                ImageCard(
+                  imageurl: "assets/images/indopacific.jpg",
+                  heading: "Indo Pacific",
+                  parentHeight: deviceHeight * 0.4,
                 ),
-                Text(
-                  widget.heading,
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 50,
-                    fontWeight: FontWeight.bold,
-                  ),
+                ImageCard(
+                  imageurl: "assets/images/japan.jpg",
+                  heading: "Japan",
+                  parentHeight: deviceHeight * 0.4,
+                ),
+                ImageCard(
+                  imageurl: "assets/images/korea.jpg",
+                  heading: "Korea",
+                  parentHeight: deviceHeight * 0.4,
+                ),
+                ImageCard(
+                  imageurl: "assets/images/southeastasia.jpg",
+                  heading: "SE Asia",
+                  parentHeight: deviceHeight * 0.4,
                 ),
                 SizedBox(
                   height: deviceHeight * 0.2,

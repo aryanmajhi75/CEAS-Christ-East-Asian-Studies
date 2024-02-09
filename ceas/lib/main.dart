@@ -13,10 +13,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: LandingPage(
-          imageurl: "assets/images/china.jpg",
-          heading: "China",
-        ),
+        body: LandingPage(),
       ),
     );
   }

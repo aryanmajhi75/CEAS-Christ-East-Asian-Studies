@@ -17,7 +17,7 @@ Widget sectionImage(BuildContext context) {
           color: Colors.black.withOpacity(0.5),
           spreadRadius: 1,
           blurRadius: 3,
-          offset: Offset(3, 7),
+          offset: const Offset(3, 7),
         ),
       ],
       borderRadius: BorderRadius.circular(12),
