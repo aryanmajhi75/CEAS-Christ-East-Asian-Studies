@@ -1,3 +1,4 @@
+import "package:ceas/pages/home_screen.dart";
 import "package:flutter/material.dart";
 
 class LandingPage extends StatefulWidget {
@@ -41,6 +42,16 @@ class _LandingPageState extends State<LandingPage> {
                   height: deviceHeight * 0.2,
                   width: deviceWidth * 0.2,
                 ),
+                ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomeScreen(),
+                        ),
+                      );
+                    },
+                    child: Text("Side bar screen"))
               ],
             ),
           ),
