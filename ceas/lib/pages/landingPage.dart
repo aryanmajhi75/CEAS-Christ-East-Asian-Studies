@@ -22,22 +22,51 @@ class _LandingPageState extends State<LandingPage> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(20),
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Card(
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        widget.imageurl,
+                        fit: BoxFit.cover,
+                      ),
+                      Text(
+                        widget.heading,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 50,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Container(
                   height: deviceHeight * 0.2,
                   width: deviceWidth * 0.9,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
+                  decoration: const BoxDecoration(
+                    color: Colors.blueAccent,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(20),
+                    ),
                   ),
                   child: Image.asset(
                     widget.imageurl,
-                    fit: BoxFit.contain,
+                    fit: BoxFit.cover,
                   ),
                 ),
-                Text(widget.heading),
+                Text(
+                  widget.heading,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
                 SizedBox(
                   height: deviceHeight * 0.2,
                   width: deviceWidth * 0.2,
