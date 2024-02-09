@@ -20,7 +20,7 @@ Future<void> lnchUrl() async {
 
 class _EducationPageState extends State<EducationPage> {
   String selectedOption = 'All';
-  bool allSelected = false;
+  // bool allSelected = false;
   bool ugSelected = false;
   bool pgSelected = false;
   bool phdSelected = false;
@@ -43,7 +43,7 @@ class _EducationPageState extends State<EducationPage> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                FilterChip.elevated(
+                /* FilterChip.elevated(
                   selected: allSelected,
                   showCheckmark: true,
                   label: const Text("All"),
@@ -59,7 +59,7 @@ class _EducationPageState extends State<EducationPage> {
                 ),
                 const SizedBox(
                   width: 16,
-                ),
+                ), */
                 FilterChip.elevated(
                   selected: ugSelected,
                   showCheckmark: true,
@@ -68,7 +68,7 @@ class _EducationPageState extends State<EducationPage> {
                     setState(() {
                       selectedOption = "UG";
                       ugSelected = !ugSelected;
-                      allSelected = false;
+                      // allSelected = false;
                       pgSelected = false;
                       phdSelected = false;
                     });
@@ -85,7 +85,7 @@ class _EducationPageState extends State<EducationPage> {
                     setState(() {
                       selectedOption = "PG";
                       pgSelected = !pgSelected;
-                      allSelected = false;
+                      // allSelected = false;
                       ugSelected = false;
                       phdSelected = false;
                     });
@@ -102,7 +102,7 @@ class _EducationPageState extends State<EducationPage> {
                     setState(() {
                       selectedOption = "Ph.D";
                       phdSelected = !phdSelected;
-                      allSelected = false;
+                      // allSelected = false;
                       ugSelected = false;
                       pgSelected = false;
                     });
@@ -171,18 +171,18 @@ Widget contentItem(Item item) {
             ),
           ),
         ),
-        Expanded(
+        const Expanded(
           flex: 1,
           child: Row(
             children: [
-              const Text(
+              Text(
                 "Click to visit",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 width: 8,
               ),
               IconButton.filled(
