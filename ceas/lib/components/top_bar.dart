@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget TopBar(BuildContext context) {
+Widget TopBar(BuildContext context, String country) {
   return Container(
     height: MediaQuery.of(context).size.height * 0.1,
     width: double.maxFinite,
@@ -21,7 +21,7 @@ Widget TopBar(BuildContext context) {
       color: Color(0xff0a0908),
     ),
     child: Text(
-      "East Asian Contries",
+      country,
       style: TextStyle(
         fontSize: 28,
         fontWeight: FontWeight.bold,

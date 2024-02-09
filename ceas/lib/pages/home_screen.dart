@@ -113,7 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Container(
           child: Column(
             children: [
-              TopBar(context),
+              TopBar(context, "Home"),
             ],
           ),
         ),
@@ -125,9 +125,9 @@ class _HomeScreenState extends State<HomeScreen> {
 class DrawerTileItem {
   final IconData icon;
   final String title;
-  final Widget route;
+  final Widget screen;
 
-  DrawerTileItem(this.icon, this.title, this.route);
+  DrawerTileItem(this.icon, this.title, this.screen);
 }
 
 Widget drawerItem(BuildContext context, DrawerTileItem item) {
@@ -140,7 +140,7 @@ Widget drawerItem(BuildContext context, DrawerTileItem item) {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => item.route,
+          builder: (context) => item.screen,
         ),
       );
     },
