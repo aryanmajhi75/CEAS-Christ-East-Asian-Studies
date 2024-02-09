@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     DrawerTileItem(
       Icons.school,
       "Higher Education",
-      const EducationPage(),
+      EducationPage(),
     ),
     DrawerTileItem(
       Icons.cast_for_education,

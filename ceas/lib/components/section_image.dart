@@ -7,11 +7,19 @@ Widget sectionImage(BuildContext context) {
       vertical: 24,
       horizontal: 12,
     ),
-    height: deviceHeight * 0.4,
+    height: deviceHeight * 0.3,
     width: double.maxFinite,
     alignment: Alignment.center,
     decoration: BoxDecoration(
-      // color: Colors.red,
+      color: Colors.grey,
+      boxShadow: [
+        BoxShadow(
+          color: Colors.black.withOpacity(0.5),
+          spreadRadius: 1,
+          blurRadius: 3,
+          offset: Offset(3, 7),
+        ),
+      ],
       borderRadius: BorderRadius.circular(12),
       image: const DecorationImage(
         image: AssetImage(
@@ -27,6 +35,7 @@ Widget sectionImage(BuildContext context) {
         color: Colors.white,
         fontWeight: FontWeight.bold,
         fontSize: 32,
+        letterSpacing: 0.5,
       ),
       textAlign: TextAlign.center,
     ),
