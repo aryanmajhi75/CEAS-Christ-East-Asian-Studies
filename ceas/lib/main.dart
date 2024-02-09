@@ -11,8 +11,12 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: LandingPage(imageurl: "assets/images/china.jpg", heading: ""),
+        body: LandingPage(
+          imageurl: "assets/images/china.jpg",
+          heading: "China",
+        ),
       ),
     );
   }
