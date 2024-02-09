@@ -1,12 +1,21 @@
 import 'package:ceas/components/section_image.dart';
 import 'package:ceas/components/top_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EducationPage extends StatefulWidget {
   const EducationPage({super.key});
 
   @override
   State<EducationPage> createState() => _EducationPageState();
+}
+
+final Uri _url = Uri.parse("www.google.com");
+
+Future<void> lnchUrl() async {
+  if (!await launchUrl(_url)) {
+    throw Exception('Could not launch $_url');
+  }
 }
 
 class _EducationPageState extends State<EducationPage> {
@@ -162,22 +171,22 @@ Widget contentItem(Item item) {
             ),
           ),
         ),
-        const Expanded(
+        Expanded(
           flex: 1,
           child: Row(
             children: [
-              Text(
+              const Text(
                 "Click to visit",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
               IconButton.filled(
-                onPressed: null,
+                onPressed: lnchUrl,
                 icon: Icon(
                   Icons.link,
                   color: Colors.white70,
