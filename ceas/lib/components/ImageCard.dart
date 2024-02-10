@@ -1,4 +1,5 @@
 import 'package:ceas/pages/home_screen.dart';
+import 'package:ceas/pages/menuDrawer.dart';
 import 'package:flutter/material.dart';
 
 class ImageCard extends StatefulWidget {
@@ -24,7 +25,7 @@ class _ImageCardState extends State<ImageCard> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => HomeScreen(),
+            builder: (context) => MenuDrawer(),
           ),
         );
       },

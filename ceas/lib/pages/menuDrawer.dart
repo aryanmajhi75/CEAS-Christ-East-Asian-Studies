@@ -1,4 +1,7 @@
 import 'package:ceas/components/Destination.dart';
+import 'package:ceas/pages/education_page.dart';
+import 'package:ceas/pages/home_screen.dart';
+import 'package:ceas/pages/scholarship_page.dart';
 import 'package:flutter/material.dart';
 
 class MenuDrawer extends StatefulWidget {
@@ -14,6 +17,11 @@ class _MenuDrawerState extends State<MenuDrawer> {
   int screenIndex = 0;
   late bool showNavigationDrawer;
 
+  List<Widget> screens = [
+    HomeScreen(),
+    EducationPage(),
+    ScholarshipPage(),
+  ];
   void handleScreenChanged(int selectedScreen) {
     setState(() {
       screenIndex = selectedScreen;
@@ -26,12 +34,14 @@ class _MenuDrawerState extends State<MenuDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    return buildDrawerScaffold(context);
+    return SafeArea(
+      child: buildDrawerScaffold(context),
+    );
   }
 
   Widget buildDrawerScaffold(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton.small(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           openDrawer();
         },
@@ -39,47 +49,33 @@ class _MenuDrawerState extends State<MenuDrawer> {
       ),
       key: scaffoldKey,
       body: SafeArea(
-        bottom: false,
-        top: false,
-        child: Row(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 5),
-              child: NavigationRail(
-                minWidth: 50,
-                destinations: destinations.map(
-                  (Destination destination) {
-                    return NavigationRailDestination(
-                      label: Text(destination.label),
-                      icon: destination.icon,
-                      selectedIcon: destination.selectedIcon,
-                    );
-                  },
-                ).toList(),
-                selectedIndex: screenIndex,
-                useIndicator: true,
-                onDestinationSelected: (int index) {
-                  setState(() {
-                    screenIndex = index;
-                  });
-                },
-              ),
+        child: screens[screenIndex],
+      ),
+      endDrawer: NavigationDrawer(
+        onDestinationSelected: handleScreenChanged,
+        selectedIndex: screenIndex,
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.fromLTRB(28, 16, 16, 10),
+            child: Text(
+              'Header',
+              style: Theme.of(context).textTheme.titleSmall,
             ),
-            const VerticalDivider(thickness: 1, width: 1),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Text('Page Index = $screenIndex'),
-                  ElevatedButton(
-                    onPressed: openDrawer,
-                    child: const Text('Open Drawer'),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
+          ),
+          ...destinations.map(
+            (Destination destination) {
+              return NavigationDrawerDestination(
+                label: Text(destination.label),
+                icon: destination.icon,
+                selectedIcon: destination.selectedIcon,
+              );
+            },
+          ),
+          const Padding(
+            padding: EdgeInsets.fromLTRB(28, 16, 28, 10),
+            child: Divider(),
+          ),
+        ],
       ),
     );
   }

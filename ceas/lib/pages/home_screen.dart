@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
     ),
     DrawerTileItem(
       Icons.compare_arrows,
-      "Exchnages",
+      "Exchanges",
       const ExchangesPage(),
     ),
     DrawerTileItem(

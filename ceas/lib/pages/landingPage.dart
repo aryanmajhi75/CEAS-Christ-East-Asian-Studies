@@ -50,20 +50,20 @@ class _LandingPageState extends State<LandingPage> {
                   heading: "SE Asia",
                   parentHeight: deviceHeight * 0.4,
                 ),
-                SizedBox(
-                  height: deviceHeight * 0.2,
-                  width: deviceWidth * 0.2,
-                ),
-                ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeScreen(),
-                        ),
-                      );
-                    },
-                    child: Text("Side bar screen"))
+                // SizedBox(
+                //   height: deviceHeight * 0.2,
+                //   width: deviceWidth * 0.2,
+                // ),
+                // ElevatedButton(
+                //     onPressed: () {
+                //       Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //           builder: (context) => HomeScreen(),
+                //         ),
+                //       );
+                //     },
+                //     child: Text("Side bar screen"))
               ],
             ),
           ),

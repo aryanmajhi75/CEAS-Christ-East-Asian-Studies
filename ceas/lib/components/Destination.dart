@@ -25,11 +25,6 @@ const List<Destination> destinations = <Destination>[
     Icon(Icons.cast_for_education_outlined),
   ),
   Destination(
-    'Settings',
-    Icon(Icons.settings_outlined),
-    Icon(Icons.settings),
-  ),
-  Destination(
     'Exchanges',
     Icon(Icons.swap_horizontal_circle_outlined),
     Icon(Icons.swap_horizontal_circle),
