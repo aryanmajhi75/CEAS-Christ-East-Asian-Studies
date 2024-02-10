@@ -1,11 +1,23 @@
 import 'package:ceas/components/Destination.dart';
+import 'package:ceas/pages/about_us_page.dart';
+import 'package:ceas/pages/conferences_page.dart';
 import 'package:ceas/pages/education_page.dart';
+import 'package:ceas/pages/exchanges_page.dart';
+import 'package:ceas/pages/fellowship_page.dart';
+import 'package:ceas/pages/financial_aid_page.dart';
+import 'package:ceas/pages/fund_agencies_page.dart';
 import 'package:ceas/pages/home_screen.dart';
+import 'package:ceas/pages/internship_page.dart';
 import 'package:ceas/pages/scholarship_page.dart';
+import 'package:ceas/pages/university_page.dart';
 import 'package:flutter/material.dart';
 
 class MenuDrawer extends StatefulWidget {
-  const MenuDrawer({super.key});
+  final String header;
+  const MenuDrawer({
+    super.key,
+    required this.header,
+  });
 
   @override
   State<MenuDrawer> createState() => _MenuDrawerState();
@@ -21,6 +33,14 @@ class _MenuDrawerState extends State<MenuDrawer> {
     HomeScreen(),
     EducationPage(),
     ScholarshipPage(),
+    ExchangesPage(),
+    ConferencesPage(),
+    InternshipPage(),
+    AboutUs(),
+    FellowshipPage(),
+    FinancialAidPage(),
+    UniversityPage(),
+    FundAgenciesPage(),
   ];
   void handleScreenChanged(int selectedScreen) {
     setState(() {
@@ -45,7 +65,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
         onPressed: () {
           openDrawer();
         },
-        child: Icon(Icons.menu),
+        child: const Icon(Icons.menu),
       ),
       key: scaffoldKey,
       body: SafeArea(
@@ -58,7 +78,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
           Padding(
             padding: const EdgeInsets.fromLTRB(28, 16, 16, 10),
             child: Text(
-              'Header',
+              widget.header,
               style: Theme.of(context).textTheme.titleSmall,
             ),
           ),

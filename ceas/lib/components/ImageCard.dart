@@ -25,7 +25,9 @@ class _ImageCardState extends State<ImageCard> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => MenuDrawer(),
+            builder: (context) => MenuDrawer(
+              header: widget.heading,
+            ),
           ),
         );
       },
