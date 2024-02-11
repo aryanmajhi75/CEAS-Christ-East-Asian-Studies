@@ -29,6 +29,10 @@ class _MenuDrawerState extends State<MenuDrawer> {
   int screenIndex = 0;
   late bool showNavigationDrawer;
 
+  getCountryName() {
+    return widget.header;
+  }
+
   List<Widget> screens = [
     HomeScreen(),
     EducationPage(),

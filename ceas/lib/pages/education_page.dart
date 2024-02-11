@@ -26,113 +26,132 @@ class _EducationPageState extends State<EducationPage> {
   bool phdSelected = false;
 
   List<Item> items = [
-    Item(title: "Coursera", url: "www.google.com"),
+    Item(
+        title: "Coursera",
+        url:
+            "https://www.coursera.org/courses?utm_source=gg&utm_medium=sem&utm_campaign=B2C_India_FTCOF_Branded_ARTE_EXP&utm_content=B2C&campaignid=20590309416&adgroupid=155702724684&device=c&keyword=coursera&matchtype=e&network=g&devicemodel=&adpostion=&creativeid=675426312952&hide_mobile_promo&gclid=CjwKCAiA2pyuBhBKEiwApLaIO9hIlODB3DGFX_M6Vs69vA6L8oCjDciwmk0dUvZRwy0eIMFkov2rBBoCoEYQAvD_BwE"),
+    Item(
+        title: "Udemy",
+        url:
+            "https://www.udemy.com/?utm_source=adwords&utm_medium=udemyads&utm_campaign=Generic-Broad_la.EN_cc.INDIA&utm_content=deal4584&utm_term=_._ag_85531604606_._ad_670210024451_._kw_online%20education_._de_c_._dm__._pl__._ti_kwd-10579001_._li_9062015_._pd__._&matchtype=b&gad_source=1&gclid=CjwKCAiA2pyuBhBKEiwApLaIO5I6ptQQ0csn3V7pp-8eWEin7zxbQDj2tAXmPtMnnzeiChXrnKLEbxoC1tgQAvD_BwE"),
+    Item(
+        title: "Stanford (Online)",
+        url: "https://online.stanford.edu/free-courses"),
+    Item(
+        title: "Simply Learn (Online)",
+        url: "https://www.simplilearn.com/skillup-free-online-courses"),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
+        child: ListView(
+          padding: const EdgeInsets.all(10),
           children: [
-            TopBar(
-              context,
-              "China",
-            ), //TODO: replace with country name explicitly
-            sectionImage(context),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                /* FilterChip.elevated(
-                  selected: allSelected,
-                  showCheckmark: true,
-                  label: const Text("All"),
-                  onSelected: (value) {
-                    setState(() {
-                      selectedOption = "All";
-                      allSelected = !allSelected;
-                      ugSelected = false;
-                      pgSelected = false;
-                      phdSelected = false;
-                    });
-                  },
+            ListTile(
+              style: ListTileStyle.list,
+              visualDensity: VisualDensity.comfortable,
+              title: Container(
+                clipBehavior: Clip.antiAlias,
+                height: 300,
+                decoration: BoxDecoration(
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(30),
                 ),
-                const SizedBox(
-                  width: 16,
-                ), */
-                FilterChip.elevated(
-                  selected: ugSelected,
-                  showCheckmark: true,
-                  label: const Text("UG"),
-                  onSelected: (value) {
-                    setState(() {
-                      selectedOption = "UG";
-                      ugSelected = !ugSelected;
-                      // allSelected = false;
-                      pgSelected = false;
-                      phdSelected = false;
-                    });
-                  },
+                child: Image.asset(
+                  "assets/images/higherstudies.jpg",
+                  fit: BoxFit.cover,
+                  cacheHeight: 600,
                 ),
-                const SizedBox(
-                  width: 16,
+              ),
+              subtitle: Text(
+                "Higher Education at China",
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
                 ),
-                FilterChip.elevated(
-                  selected: pgSelected,
-                  showCheckmark: true,
-                  label: const Text("PG"),
-                  onSelected: (value) {
-                    setState(() {
-                      selectedOption = "PG";
-                      pgSelected = !pgSelected;
-                      // allSelected = false;
-                      ugSelected = false;
-                      phdSelected = false;
-                    });
-                  },
-                ),
-                const SizedBox(
-                  width: 16,
-                ),
-                FilterChip.elevated(
-                  selected: phdSelected,
-                  showCheckmark: true,
-                  label: const Text("Ph.D"),
-                  onSelected: (value) {
-                    setState(() {
-                      selectedOption = "Ph.D";
-                      phdSelected = !phdSelected;
-                      // allSelected = false;
-                      ugSelected = false;
-                      pgSelected = false;
-                    });
-                  },
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            Text(
-              "$selectedOption Higher Education Opportunities",
-              style: const TextStyle(
-                fontWeight: FontWeight.w600,
-                fontSize: 18,
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(
-                top: 8,
-                right: 16,
-                left: 16,
+            ListTile(
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  FilterChip.elevated(
+                    selected: ugSelected,
+                    showCheckmark: true,
+                    label: const Text("UG"),
+                    onSelected: (value) {
+                      setState(() {
+                        selectedOption = "UG";
+                        ugSelected = !ugSelected;
+                        // allSelected = false;
+                        pgSelected = false;
+                        phdSelected = false;
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  FilterChip.elevated(
+                    selected: pgSelected,
+                    showCheckmark: true,
+                    label: const Text("PG"),
+                    onSelected: (value) {
+                      setState(() {
+                        selectedOption = "PG";
+                        pgSelected = !pgSelected;
+                        // allSelected = false;
+                        ugSelected = false;
+                        phdSelected = false;
+                      });
+                    },
+                  ),
+                  const SizedBox(
+                    width: 16,
+                  ),
+                  FilterChip.elevated(
+                    selected: phdSelected,
+                    showCheckmark: true,
+                    label: const Text("Ph.D"),
+                    onSelected: (value) {
+                      setState(() {
+                        selectedOption = "Ph.D";
+                        phdSelected = !phdSelected;
+                        // allSelected = false;
+                        ugSelected = false;
+                        pgSelected = false;
+                      });
+                    },
+                  ),
+                ],
               ),
-              padding: const EdgeInsets.all(16),
-              height: MediaQuery.of(context).size.height * 0.35,
-              child: ListView.builder(
-                itemBuilder: (context, index) => contentItem(items[index]),
-                itemCount: items.length,
+            ),
+            ListTile(
+              title: Text(
+                "$selectedOption Higher Education Opportunities",
+                style: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                ),
               ),
-            )
+            ),
+            ListTile(
+              title: Container(
+                height: MediaQuery.of(context).size.height * 0.35,
+                child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  itemBuilder: (context, index) => Container(
+                    padding: EdgeInsets.all(5),
+                    child: contentItem(
+                      items[index],
+                    ),
+                  ),
+                  itemCount: items.length,
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -150,14 +169,14 @@ class Item {
 Widget contentItem(Item item) {
   return Container(
     decoration: BoxDecoration(
-      color: const Color(0xff051923),
-      borderRadius: BorderRadius.circular(8),
+      border: Border.all(
+        color: Colors.black,
+      ),
+      // boxShadow: List.of(elements),
+      // color: const Color(0xff051923),
+      borderRadius: BorderRadius.circular(20),
     ),
-    padding: const EdgeInsets.only(
-      left: 24,
-      top: 8,
-      bottom: 8,
-    ),
+    padding: const EdgeInsets.all(10),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -166,33 +185,16 @@ Widget contentItem(Item item) {
           child: Text(
             item.title,
             style: const TextStyle(
-              color: Colors.white,
+              color: Colors.black,
               fontWeight: FontWeight.w500,
             ),
           ),
         ),
-        const Expanded(
-          flex: 1,
-          child: Row(
-            children: [
-              Text(
-                "Click to visit",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              SizedBox(
-                width: 8,
-              ),
-              IconButton.filled(
-                onPressed: lnchUrl,
-                icon: Icon(
-                  Icons.link,
-                  color: Colors.white70,
-                ),
-              )
-            ],
+        const IconButton.filled(
+          onPressed: lnchUrl,
+          icon: Icon(
+            Icons.open_in_new,
+            color: Colors.white70,
           ),
         )
       ],
