@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:ceas/pages/menuDrawer.dart';
+import 'package:ceas/theme/constants.dart';
+import 'package:ceas/theme/themes.dart';
 import 'package:flutter/material.dart';
 
 class ImageCard extends StatefulWidget {
@@ -18,9 +22,21 @@ class ImageCard extends StatefulWidget {
 
 class _ImageCardState extends State<ImageCard> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        if (widget.heading == "Indo Pacific") {
+          selectedCountry = "IndoPacific";
+        } else if (widget.heading == "SE Asia") {
+          selectedCountry = "SEAsia";
+        } else {
+          selectedCountry = widget.heading;
+        }
         Navigator.push(
           context,
           MaterialPageRoute(

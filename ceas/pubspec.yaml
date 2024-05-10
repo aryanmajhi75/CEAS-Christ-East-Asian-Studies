@@ -9,7 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  url_launcher: ^6.2.4
+  url_launcher:
+  gap: 
+  firebase_core:
+  cloud_firestore: 
 
 dev_dependencies:
   flutter_test:

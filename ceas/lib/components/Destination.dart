@@ -44,11 +44,6 @@ const List<Destination> destinations = <Destination>[
     Icon(Icons.work),
   ),
   Destination(
-    'About Us',
-    Icon(Icons.info_outline),
-    Icon(Icons.info),
-  ),
-  Destination(
     'Fellowship Programs',
     Icon(Icons.groups_3_outlined),
     Icon(Icons.groups_3),
@@ -67,5 +62,10 @@ const List<Destination> destinations = <Destination>[
     'Fund Agency',
     Icon(Icons.account_balance_outlined),
     Icon(Icons.account_balance),
+  ),
+  Destination(
+    'About Us',
+    Icon(Icons.info_outline),
+    Icon(Icons.info),
   ),
 ];
