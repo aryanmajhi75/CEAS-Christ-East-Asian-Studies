@@ -1,4 +1,7 @@
-import 'package:ceas/dbHelper/links.dart';
+import 'package:ceas/components/shimmerList.dart';
+import 'package:ceas/dbHelper/datamodels.dart';
+import 'package:ceas/dbHelper/firebase.dart';
+import 'package:ceas/dbHelper/weblauncher.dart';
 import 'package:ceas/theme/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -15,27 +18,20 @@ class _AboutUsState extends State<AboutUs> {
 
   // bool allSelected = false;
   bool ugSelected = false;
-
   bool pgSelected = false;
-
   bool phdSelected = false;
 
-  List<Link> items = [
-    Link(
-        title: "Coursera",
-        url:
-            "https://www.coursera.org/courses?utm_source=gg&utm_medium=sem&utm_campaign=B2C_India_FTCOF_Branded_ARTE_EXP&utm_content=B2C&campaignid=20590309416&adgroupid=155702724684&device=c&keyword=coursera&matchtype=e&network=g&devicemodel=&adpostion=&creativeid=675426312952&hide_mobile_promo&gclid=CjwKCAiA2pyuBhBKEiwApLaIO9hIlODB3DGFX_M6Vs69vA6L8oCjDciwmk0dUvZRwy0eIMFkov2rBBoCoEYQAvD_BwE"),
-    Link(
-        title: "Udemy",
-        url:
-            "https://www.udemy.com/?utm_source=adwords&utm_medium=udemyads&utm_campaign=Generic-Broad_la.EN_cc.INDIA&utm_content=deal4584&utm_term=_._ag_85531604606_._ad_670210024451_._kw_online%20education_._de_c_._dm__._pl__._ti_kwd-10579001_._li_9062015_._pd__._&matchtype=b&gad_source=1&gclid=CjwKCAiA2pyuBhBKEiwApLaIO5I6ptQQ0csn3V7pp-8eWEin7zxbQDj2tAXmPtMnnzeiChXrnKLEbxoC1tgQAvD_BwE"),
-    Link(
-        title: "Stanford (Online)",
-        url: "https://online.stanford.edu/free-courses"),
-    Link(
-        title: "Simply Learn (Online)",
-        url: "https://www.simplilearn.com/skillup-free-online-courses"),
-  ];
+  List<Links> links = [];
+
+  loadData() async {
+    links = getLinks("education", "");
+  }
+
+  @override
+  void initState() {
+    loadData();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -72,12 +68,54 @@ class _AboutUsState extends State<AboutUs> {
                   thickness: 2,
                 ),
                 Gap(screenHeight * 0.01),
-                // FutureBuilder(
-                //     builder: (context, snapshot) {
-                //       return CircularProgressIndicator();
-                //     },
-                // : ListView.builder(itemBuilder: (context, index) {})
-                // ),
+                SizedBox(
+                  width: screenWidth * 0.9,
+                  height: screenHeight * 0.5,
+                  child: FutureBuilder(
+                    future: getLinks("aboutus", ""),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const ShimmerList();
+                      } else if (snapshot.hasError) {
+                        return Text('Error: ${snapshot.error}');
+                      }
+                      return ListView.builder(
+                        itemCount: links.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Card.outlined(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: Modifiers().borderRad),
+                            elevation: 10,
+                            child: Column(
+                              children: [
+                                Text(
+                                  links[index].heading,
+                                  style: Theme.of(context).textTheme.bodyMedium,
+                                ),
+                                Gap(screenHeight * 0.01),
+                                Row(
+                                  children: [
+                                    SizedBox(
+                                      width: screenWidth * 0.5,
+                                      child: Text(links[index].category),
+                                    ),
+                                    OutlinedButton.icon(
+                                        onPressed: () {
+                                          gotoUrl(links[index].url);
+                                        },
+                                        icon: const Icon(
+                                            Icons.arrow_forward_rounded),
+                                        label: const Text("Go to site"))
+                                  ],
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  ),
+                ),
               ],
             ),
           ),

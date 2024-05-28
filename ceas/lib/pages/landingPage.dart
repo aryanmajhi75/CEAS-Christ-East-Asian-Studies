@@ -1,3 +1,4 @@
+import "package:animated_text_kit/animated_text_kit.dart";
 import "package:ceas/components/ImageCard.dart";
 import "package:ceas/theme/constants.dart";
 import "package:flutter/material.dart";
@@ -15,6 +16,19 @@ class _LandingPageState extends State<LandingPage> {
     final deviceHeight = MediaQuery.of(context).size.height;
     final deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        title: AnimatedTextKit(
+          animatedTexts: [
+            TypewriterAnimatedText(
+              "Welcome",
+              textStyle: Theme.of(context).textTheme.titleMedium,
+              speed: const Duration(
+                milliseconds: 70,
+              ),
+            ),
+          ],
+        ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.only(

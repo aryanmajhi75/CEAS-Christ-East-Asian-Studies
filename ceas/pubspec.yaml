@@ -13,6 +13,8 @@ dependencies:
   gap: 
   firebase_core:
   cloud_firestore: 
+  shimmer:
+  animated_text_kit:
 
 dev_dependencies:
   flutter_test:

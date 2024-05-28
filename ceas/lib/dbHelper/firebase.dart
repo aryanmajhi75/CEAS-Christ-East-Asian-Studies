@@ -8,9 +8,25 @@ import 'package:firebase_core/firebase_core.dart';
 final firebaseApp = Firebase.app();
 FirebaseFirestore data = FirebaseFirestore.instance;
 
-getLinks(String path, String filter) async {
-  List<Links> links = [];
+getCountrydetails() async {
+  QuerySnapshot countryDetails;
 
+  // countryDetails = await data.collection("Countries").doc(selectedCountry);
+  var something = await data.collection("Countries").doc(selectedCountry).get();
+
+  // log(something.data().toString());
+  GeneralInfo generalinfo = GeneralInfo(description: "", educationPolicy: "");
+  generalinfo = GeneralInfo.fromJson(something.data()!);
+
+  // log("Description : ${generalinfo.description}");
+  // log("Education Policy : ${generalinfo.educationPolicy}");
+  countryInfo = GeneralInfo(
+    description: generalinfo.description,
+    educationPolicy: generalinfo.educationPolicy,
+  );
+}
+
+getLinks(String path, String filter) async {
   QuerySnapshot value;
 
   if (filter == "") {
@@ -28,16 +44,19 @@ getLinks(String path, String filter) async {
         .get();
   }
 
+  links = [];
+
   for (var v in value.docs) {
     Map<String, dynamic> data = v.data() as Map<String, dynamic>;
     links.add(Links.fromJson(data));
   }
 
-  for (var i in links) {
-    print("Category : ${i.category}");
-    print("Url      : ${i.url}");
-    print("Heading  : ${i.heading}");
-  }
+  // for (var i in links) {
+  //   print("--------------------------");
+  //   print("Category : ${i.category}");
+  //   print("Url      : ${i.url}");
+  //   print("Heading  : ${i.heading}");
+  // }
 
-  return links;
+  // print(links.runtimeType);
 }

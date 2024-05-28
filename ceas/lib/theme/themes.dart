@@ -5,6 +5,9 @@ import 'package:flutter/material.dart';
 ThemeData darkMode = ThemeData(
   useMaterial3: true,
   scaffoldBackgroundColor: Primary().dark,
+  appBarTheme: AppBarTheme(
+    backgroundColor: Primary().dark,
+  ),
   fontFamily: 'Quicksand',
   textTheme: TextTheme(
     titleMedium: TextStyle(
@@ -55,6 +58,10 @@ ThemeData darkMode = ThemeData(
 //Theme settingsfor light theme
 ThemeData lightMode = ThemeData(
   useMaterial3: true,
+  scaffoldBackgroundColor: Primary().light,
+  appBarTheme: AppBarTheme(
+    backgroundColor: Primary().light,
+  ),
   colorScheme: ColorScheme.dark(
     background: Primary().light,
     brightness: Brightness.dark,

@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:ui';
 
+import 'package:ceas/dbHelper/datamodels.dart';
 import 'package:flutter/material.dart';
 
 class Modifiers {
@@ -26,6 +27,7 @@ class Secondary {
 class Tertiary {
   Color dark = const Color(0xFFFFFFFF);
   Color light = const Color(0xFF000000);
+  Color gray = const Color(0xFF818181);
 }
 
 //check if user is logged in or not
@@ -34,3 +36,8 @@ class User {
 }
 
 String selectedCountry = "";
+List<Links> links = [];
+GeneralInfo countryInfo = GeneralInfo(
+  description: "",
+  educationPolicy: "",
+);

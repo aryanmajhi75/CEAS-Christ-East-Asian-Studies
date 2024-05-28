@@ -1,4 +1,3 @@
-import 'package:ceas/dbHelper/links.dart';
 import 'package:ceas/theme/constants.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +21,7 @@ class _LinkListItemState extends State<LinkListItem> {
     final screenWidth = MediaQuery.of(context).size.width;
     return InkWell(
       onTap: () {
-        launchUrlBrowser(widget.url);
+        // launchUrlBrowser(widget.url);
       },
       child: Card.outlined(
         semanticContainer: true,
